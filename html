@@ -2,7 +2,56 @@
 <html>
 <head>
     <title>Kalkulator Nilai Siswa</title>
-    <link rel="stylesheet" href="styles.css">
+    body {
+    font-family: Times New Roman;
+    background-color: lightblue;
+    padding: 35px;
+}
+
+.container {
+    width: 350px;
+    margin: auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    
+}
+
+h2 {
+    text-align: center;
+    color: maroon;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: lightgreen;
+    color: black;
+    border: none;
+    border-radius: 8px;
+}
+
+#hasil {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: grey;
+}
+.lulus {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.tidak-lulus {
+    color: maroon;
+    font-weight: bold;
+}
 </head>
 
 <body>
@@ -19,6 +68,33 @@
 
         <div id="hasil"></div>
     </div>
-    <script src="script.js"></script>
+    <script>
+       function hitungNilai() {
+
+    let nama = document.getElementById("nama").value;
+    let tugas = Number(document.getElementById("tugas").value);
+    let uts = Number(document.getElementById("uts").value);
+    let uas = Number(document.getElementById("uas").value);
+
+    let nilaiAkhir = (tugas * 0.30) + (uts * 0.30) + (uas * 0.40);
+
+    let keterangan;
+
+    if (nilaiAkhir >= 75) {
+        keterangan = "Lulus";
+    } else {
+        keterangan = "Tidak Lulus";
+    }if (nilaiAkhir >= 75) {
+    keterangan = '<span class="lulus">Lulus</span>';
+} else {
+    keterangan = '<span class="tidak-lulus">Tidak Lulus</span>';
+}
+
+    document.getElementById("hasil").innerHTML =
+        "Nama: " + nama + "<br>" +
+        "Nilai Akhir: " + nilaiAkhir.toFixed(2) + "<br>" +
+        "Keterangan: " + keterangan;
+} 
+    </script>
 </body>
 </html>
